@@ -1,0 +1,34 @@
+mkdir=makes a new directory on desktop
+cd= change directory
+git clone = clones a repository, git clone followed with the url
+git status=shows status
+git log =shows log
+git log -p= same as git diff, shows recent changes
+git log --oneline= shows log in oneline
+git log --stats= shows log with added and removed
+
+git add "filename"= move changes from repository to staging area
+git add.= add all files
+git commit -am " message"= adds and commits togeather
+git commit -m= commits and adds a message
+git push= pushes changes to online repository
+git pull= pulls changes from online repository to desktop
+
+git tag -a "followed by tag name for ex v1.1"
+
+git tag -d "followed by tag name to delete the tag"
+
+
+git branch= to check which branch you are on
+
+git branch "name of branch" = create a new branch
+
+git checkout "branch name" = to move to that branch
+
+git branch -d"name of branch= to delete the branch, note you should not be on that branch which is suppose to"
+
+git checkout -b "branch name"= git checkout command can actually create a new branch, too? If you provide the -b flag, you can create a branch and switch to it all in one command.
+
+git merge "name of branch to merge onto existing branch"
+
+git push origin:"branch name" = to delete branch which has been deleted in pc to git hub

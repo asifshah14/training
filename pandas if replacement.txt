@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+score_df=pd.read_excel("sample_scores.xlsx")
+
+score_df["Average"]=score_df.mean(axis=1)
+
+#score_df["Pass/Fail"]=np.where(score_df["Average"] > 60,"Pass","Fail")
+
+conditions=[(score_df["Average"]>=90),
+(score_df["Average"]<90) & (score_df["Average"]>=80),
+(score_df["Average"]<80) & (score_df["Average"]>=70),
+(score_df["Average"]<70) & (score_df["Average"]>=60),
+(score_df["Average"]<60)]
+
+results=["A","B","C","D","F"]
+
+score_df["Grades"]=np.select(conditions,results)
+score_df
+
+score_df["Pass/Fail"]=["Pass" if x > 60 else "Fail" for x in score_df["Average"]]
+score_df
+

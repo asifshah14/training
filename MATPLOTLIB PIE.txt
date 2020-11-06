@@ -1,0 +1,9 @@
+from matplotlib import pyplot as plt
+amount=[55,34,47,63,27]
+label=["apple","mango","watermelon","grape","orange"]
+explode=(0,0,0.1,0,0)
+plt.pie(amount,labels=label,explode=explode,shadow=True,wedgeprops={"linewidth":3},startangle=20,autopct='%1.1f%%')
+plt.title("Shop list")
+
+
+plt.show()
