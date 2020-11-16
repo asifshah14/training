@@ -32,3 +32,9 @@ git checkout -b "branch name"= git checkout command can actually create a new br
 git merge "name of branch to merge onto existing branch"
 
 git push origin:"branch name" = to delete branch which has been deleted in pc to git hub
+
+git commit --amend = modifying the last commit without creating a new commit or just updating message of the commit.
+
+git revert <SHA-of-commit-to-revert> =
+    will undo the changes that were made by the provided commit
+    creates a new commit to record the change
