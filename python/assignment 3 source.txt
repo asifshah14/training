@@ -1,0 +1,96 @@
+%matplotlib notebook
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statistics
+from scipy import stats
+import math
+import random
+
+np.random.seed(12345)
+
+df = pd.DataFrame([np.random.normal(32000,200000,3650), 
+                   np.random.normal(43000,100000,3650), 
+                   np.random.normal(43500,140000,3650), 
+                   np.random.normal(48000,70000,3650)], 
+                  index=[1992,1993,1994,1995])
+
+means1 = df.mean(axis='columns')
+means = means1.values.tolist()
+
+data = df.iloc[0,:]
+t_dist = stats.t(loc=data.mean(),
+                 scale=np.sqrt(data.var()/3650),
+                 df=3649)
+bottom1, up1 = t_dist.interval(alpha=0.95)
+ci = [(bottom1, up1)]
+
+data = df.iloc[1,:]
+t_dist = stats.t(loc=data.mean(),
+                 scale=np.sqrt(data.var()/3650),
+                 df=3649)
+bottom2, up2 = t_dist.interval(alpha=0.95)
+ci1 = [(bottom2, up2)]
+ci = ci+ci1
+
+data = df.iloc[2,:]
+t_dist = stats.t(loc=data.mean(),
+                 scale=np.sqrt(data.var()/3650),
+                 df=3649)
+bottom3, up3 = t_dist.interval(alpha=0.95)
+ci1 = [(bottom3, up3)]
+ci = ci+ci1
+
+data = df.iloc[3,:]
+t_dist = stats.t(loc=data.mean(),
+                 scale=np.sqrt(data.var()/3650),
+                 df=3649)
+bottom4, up4 = t_dist.interval(alpha=0.95)
+ci1 = [(bottom4, up4)]
+ci = ci+ci1
+
+
+fig, ax = plt.subplots()
+yerr = [means[i] - ci[i][1] for i in range(len(ci))]
+label = ["1992", "1993", "1994", "1995"]
+# plt.xticks(range(len(means)), [str(year) for year in range(1992, 1996)])
+ax.bar(range(len(means)), means, yerr=yerr, alpha=0.2, align='center',
+       width=0.9,tick_label=label, capsize=5,linewidth=1,edgecolor='black')
+    
+color1992 = 'w'
+color1993 = 'w'
+color1994 = 'w'
+color1995 = 'w'
+
+def motion(event): 
+#     plt.cla()
+    if event.ydata < bottom1:
+        color1992 = "b"
+    elif event.ydata > up1:
+        color1992 = "r"
+    if event.ydata < bottom2:
+        color1993 = "b"
+    elif event.ydata > up2:
+        color1993 = "r"
+    if event.ydata < bottom3:
+        color1994 = "b"
+    elif event.ydata > up3:
+        color1994 = "r"
+    if event.ydata < bottom4:
+        color1995 = "b"
+    elif event.ydata > up4:
+        color1995 = "r"
+    color=[color1992, color1993, color1994, color1995]
+    ax.bar(range(len(means)), means, yerr=yerr, alpha=0.2, align='center',
+           color=color, width=0.9, tick_label=label, capsize=5,linewidth=1,edgecolor='black')
+#     x = event.xdata
+    y = event.ydata
+#     ln_v.set_xdata(x)
+    ln_h.set_ydata(ydata)
+    plt.draw()
+    
+# ln_v = plt.axvline(0)
+ln_h = plt.axhline(0)
+
+plt.connect('motion_notify_event', motion)

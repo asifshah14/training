@@ -1,0 +1,11 @@
+The Netherlands sports or atheltics
+
+
+Outdoors sport clubs (csv):
+https://pastebin.com/Xhh0nXCf
+
+indoors sport clubs (csv):
+https://pastebin.com/EYLBxfZX
+
+Both are originally from:
+https://opendata.cbs.nl/statline/#CBS/nl/dataset/70256NEDts=1604738671028
