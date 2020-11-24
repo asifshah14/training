@@ -1,0 +1,11 @@
+append csv
+
+import csv
+name=input("Name: ")
+phone=input("Phone: ")
+email=input("Email: ")
+
+file=open('phone.csv','a')
+filewriter=csv.writer(file)
+
+filewriter.writerow([name,phone,email])

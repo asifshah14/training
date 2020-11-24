@@ -1,1 +1,0 @@
-The colors and the range of the axes makes it simple to observe the outliers, as well as the shaded region gives more emphasis to the extreme temperatures of the year 2015

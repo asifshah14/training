@@ -52,3 +52,12 @@ RENAME COLUMN fisrt to first
 CONCAT
 UPDATE employees
 SET email= first||"@gmail.com"
+---------------------------------------------------------
+
+SELECT title, count(title) as n FROM favroute GROUP by title order by n DESC LIMIT 10
+
+SELECT title, count(title) from favroute where title like "%office%"
+
+UPDATE favroute SET title = "The Office" WHERE title like "%office%"
+
+DELETE from favroute where title="Friends"
